@@ -1,0 +1,63 @@
+# Builds the deals site and publishes it to GitHub Pages — daily + on demand.
+# Also persists the SEO deal catalog (data/catalog.ndjson) back to the repo so
+# per-deal pages accumulate across builds instead of 404-ing.
+#
+# One-time setup:
+#   1. Push this project to a GitHub repo (public repos get Pages free).
+#   2. Settings ▸ Pages ▸ Build and deployment ▸ Source = "GitHub Actions".
+#   3. Set site.base_url in config.yaml and (optionally) seo.enabled: true.
+#   4. (Optional) add KROGER_CLIENT_ID / KROGER_CLIENT_SECRET as Actions secrets.
+name: publish-site
+
+on:
+  schedule:
+    - cron: "30 11 * * *"        # ~7:30am ET; refreshes the page before the day starts
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths-ignore:               # catalog commits must not re-trigger the build
+      - "data/**"
+
+permissions:
+  contents: write               # to commit the updated catalog
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Build the static site (updates data/catalog.ndjson)
+        env:
+          KROGER_CLIENT_ID: ${{ secrets.KROGER_CLIENT_ID }}
+          KROGER_CLIENT_SECRET: ${{ secrets.KROGER_CLIENT_SECRET }}
+        run: python cli.py config.yaml --site _site
+      - name: Persist the deal catalog
+        run: |
+          git config user.name "deals-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/catalog.ndjson || true
+          git diff --cached --quiet || git commit -m "Update deal catalog [skip ci]"
+          git push || true
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,35 @@
+# Emails your daily deals from the cloud — no always-on computer needed.
+#
+# One-time setup:
+#   1. Push this project to a GitHub repo.
+#   2. Sign up at resend.com, create an API key.
+#   3. Repo Settings ▸ Secrets and variables ▸ Actions ▸ New repository secret:
+#        RESEND_API_KEY = re_xxxxxxxx
+#   4. Edit config.yaml: set email.to to your address. Commit.
+#   5. (Optional) Add KROGER_CLIENT_ID / KROGER_CLIENT_SECRET secrets for local
+#      grocery essentials.
+#   6. Actions tab ▸ daily-deals ▸ "Run workflow" to test immediately.
+name: daily-deals
+
+on:
+  schedule:
+    # UTC. 12:00 UTC ≈ 8:00am US Eastern in summer (EDT); GitHub doesn't shift
+    # for daylight saving, so use "0 13 * * *" if you want 8am in winter (EST).
+    - cron: "0 12 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Build and email the digest
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          KROGER_CLIENT_ID: ${{ secrets.KROGER_CLIENT_ID }}
+          KROGER_CLIENT_SECRET: ${{ secrets.KROGER_CLIENT_SECRET }}
+        run: python cli.py config.yaml --email

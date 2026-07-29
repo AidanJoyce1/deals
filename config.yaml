@@ -1,0 +1,77 @@
+db_path: deals.db
+per_feed_limit: 60
+per_section: 15
+regions:
+- id: home
+  label: Northeast Ohio
+  zip: '44094'
+site:
+  business_name: Deals Board
+  contact_email: aidanjoyce.tres@gmail.com
+  assets_dir: site_assets
+  base_url: https://AidanJoyce1.github.io/deals
+automonetize:
+  skimlinks:
+    enabled: false
+    publisher_id: ''
+  onelink:
+    enabled: false
+    instance_id: ''
+    marketplace: US
+seo:
+  enabled: true
+  link_cards_to_pages: true
+  max_pages: 2000
+  catalog_file: data/catalog.ndjson
+  retention_days: 45
+filters:
+  min_discount: 50
+  essential_min_discount: 15
+feeds: []
+list:
+  enabled: false
+  audience_id: ''
+  signup_endpoint: ''
+  privacy_url: privacy.html
+  sender_address: "Deals Board \xB7 123 Main St \xB7 Willoughby, OH 44094"
+tracking:
+  enabled: true
+  source: dealboard
+  campaign: daily
+  amazon_direct: true
+  redirects: true
+  beacon_url: ''
+  stats_url: ''
+  site_base_url: ''
+email:
+  enabled: true
+  to: you@example.com
+  from: onboarding@resend.dev
+  smtp_host: smtp.gmail.com
+  smtp_port: 465
+  security: ssl
+affiliate:
+  enabled: false
+  amazon_tag: ''
+  deeplink_rules: []
+rss_feeds:
+- name: slickdeals-frontpage
+  url: https://feeds.feedburner.com/SlickdealsnetUP
+- name: slickdeals-groceries
+  url: https://slickdeals.net/newsearch.php?q=grocery&searcharea=deals&searchin=first&rss=1
+- name: slickdeals-household
+  url: https://slickdeals.net/newsearch.php?q=household+essentials&searcharea=deals&searchin=first&rss=1
+kroger:
+  enabled: false
+  zipcode: '44094'
+  min_discount: 10
+  terms:
+  - milk
+  - eggs
+  - bread
+  - chicken
+  - coffee
+  - diapers
+  - laundry detergent
+  - toothpaste
+  - paper towels

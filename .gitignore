@@ -1,0 +1,7 @@
+# Ephemeral daily dedup DB (the durable SEO catalog is data/catalog.ndjson, which IS committed)
+deals.db
+*.db
+__pycache__/
+*.pyc
+_site/
+site/

@@ -1,0 +1,28 @@
+# Sends the daily digest to your opted-in Resend list.
+# Enable only when you're ready to email real subscribers:
+#   1. In config.yaml set list.enabled: true, list.audience_id, and a
+#      verified-domain email.from (the resend.dev sandbox can't send to a list).
+#   2. Add the RESEND_API_KEY secret (Settings ▸ Secrets ▸ Actions).
+#   3. This runs each morning; use "Run workflow" to test once first.
+name: broadcast-list
+
+on:
+  schedule:
+    - cron: "0 12 * * *"        # ~8am ET in summer; see daily.yml note on DST
+  workflow_dispatch: {}
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Send the list broadcast
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          KROGER_CLIENT_ID: ${{ secrets.KROGER_CLIENT_ID }}
+          KROGER_CLIENT_SECRET: ${{ secrets.KROGER_CLIENT_SECRET }}
+        run: python cli.py config.yaml --broadcast

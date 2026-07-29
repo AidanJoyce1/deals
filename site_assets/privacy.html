@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — {{BUSINESS_NAME}}</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FAFAF6;--surface:#FFFFFF;--ink:#172420;--ink-soft:#5A6660;--line:#E8E7DE;
+    --teal:#0E7C6B;--teal-ink:#0A5C4F;--marigold:#EFA015;--marigold-tint:#FBEFD6;--marigold-ink:#8A5B04;
+    --display:'Bricolage Grotesque',system-ui,sans-serif;--body:'Inter',system-ui,sans-serif;--mono:'Space Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.62}
+  .wrap{max-width:720px;margin:0 auto;padding:0 22px}
+  a{color:var(--teal-ink)}
+  /* REMOVE THIS BANNER BEFORE PUBLISHING */
+  .review{background:var(--marigold-tint);color:var(--marigold-ink);border-bottom:1.5px solid var(--marigold)}
+  .review .wrap{padding:12px 22px;font-size:13.5px;font-family:var(--mono);line-height:1.5}
+  header.masthead{padding:40px 0 8px}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--teal-ink)}
+  h1{font-family:var(--display);font-weight:800;font-size:clamp(30px,6vw,44px);line-height:1;margin:.2em 0 .1em}
+  .updated{font-family:var(--mono);font-size:13px;color:var(--ink-soft)}
+  main{padding:14px 0 56px}
+  h2{font-family:var(--display);font-weight:700;font-size:20px;margin:34px 0 6px}
+  p,li{font-size:15.5px;color:#26332C}
+  ul{padding-left:20px}
+  li{margin:4px 0}
+  .review-inline{background:var(--marigold-tint);color:var(--marigold-ink);
+    padding:1px 6px;border-radius:5px;font-family:var(--mono);font-size:12.5px}
+  .back{display:inline-block;margin-top:8px;font-family:var(--mono);font-size:13px}
+  footer{border-top:1px solid var(--line);background:var(--surface)}
+  footer .wrap{padding:22px 22px 40px;color:var(--ink-soft);font-size:13px}
+  hr{border:0;border-top:1px solid var(--line);margin:30px 0}
+</style>
+</head>
+<body>
+  <!-- ⚠️ INTERNAL NOTICE — DELETE THIS ENTIRE <div class="review"> BLOCK BEFORE PUBLISHING -->
+  <div class="review"><div class="wrap">
+    ⚠️ TEMPLATE — NOT LEGAL ADVICE. Review every section, fill each
+    <span class="review-inline">[REVIEW: …]</span> blank, tailor it to your
+    business and local laws (and have a professional check it), then delete this
+    banner.
+  </div></div>
+
+  <header class="masthead"><div class="wrap">
+    <div class="eyebrow">{{BUSINESS_NAME}} · {{LOCATION}}</div>
+    <h1>Privacy Policy</h1>
+    <div class="updated">Effective date: <span class="review-inline">[REVIEW: add an effective date]</span></div>
+    <a class="back" href="index.html">&larr; Back to the deals</a>
+  </div></header>
+
+  <main><div class="wrap">
+    <p>This policy explains what personal information {{BUSINESS_NAME}} (&ldquo;we,&rdquo;
+      &ldquo;us&rdquo;) collects when you visit our deals page or subscribe to our
+      email, how we use it, and the choices you have. Questions? Contact us at
+      <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a>.</p>
+
+    <h2>Information we collect</h2>
+    <p><strong>Information you give us.</strong> When you subscribe, we collect the
+      <strong>email address</strong> you submit. We do not ask for more than that.</p>
+    <p><strong>Information collected automatically.</strong> When you click a deal,
+      we log a <strong>click event</strong> — the deal&rsquo;s category, the
+      merchant, and a timestamp — so we can rank future deals by what readers find
+      useful. We do not attach your name or email to these events.
+      <span class="review-inline">[REVIEW: if you later add cookie-based or IP-based
+      analytics, describe it here.]</span></p>
+    <p>Our hosting and infrastructure providers may automatically process limited
+      technical data (such as IP address and browser type) in server logs to
+      deliver and secure the site. <span class="review-inline">[REVIEW: confirm what
+      your providers log and for how long.]</span></p>
+
+    <h2>How we use your information</h2>
+    <ul>
+      <li>To send you the daily deals email you signed up for.</li>
+      <li>To measure which deals are clicked and improve how we rank them.</li>
+      <li>To operate, secure, and troubleshoot the website.</li>
+      <li>To comply with legal obligations.</li>
+    </ul>
+    <p class="review-inline">[REVIEW: if you serve visitors in the EU/UK, state your
+      GDPR legal bases — e.g. consent for marketing email, legitimate interests for
+      aggregate analytics.]</p>
+
+    <h2>Service providers we share with</h2>
+    <p>We don&rsquo;t sell your personal information. We share it only with the
+      providers that run this service, each under their own privacy terms:</p>
+    <ul>
+      <li><strong>Resend</strong> — stores your email address and delivers our
+        emails. See resend.com&rsquo;s privacy policy.</li>
+      <li><strong>Cloudflare</strong> — runs the small endpoint that records your
+        subscription and click events. See cloudflare.com&rsquo;s privacy policy.</li>
+      <li><strong>GitHub Pages</strong> — hosts this website. See GitHub&rsquo;s
+        privacy statement.</li>
+      <li><strong>Affiliate networks</strong> (such as the Amazon Associates
+        Program and others) — when you click an affiliate link, the destination
+        retailer and its network may set their own cookies and process data under
+        their policies.
+        <span class="review-inline">[REVIEW: list the specific networks you join.]</span></li>
+    </ul>
+
+    <h2>Affiliate links</h2>
+    <p>Some links on this site are affiliate links: if you buy through them, we may
+      earn a commission at no extra cost to you. As an Amazon Associate we earn from
+      qualifying purchases. Clicking an affiliate link takes you directly to the
+      retailer, whose own privacy practices then apply.</p>
+
+    <h2>Cookies &amp; tracking</h2>
+    <p>Our own page uses <span class="review-inline">[REVIEW: state accurately —
+      e.g. &ldquo;no cookies&rdquo; or which ones]</span>. Click tracking is
+      recorded as anonymous event counts, not through cookies that identify you.
+      Third-party retailers you visit through our links may use their own cookies.</p>
+
+    <h2>Your choices &amp; rights</h2>
+    <ul>
+      <li><strong>Unsubscribe anytime</strong> using the link at the bottom of every
+        email. We stop sending promptly.</li>
+      <li><strong>Access or delete your data</strong> — email
+        <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a> and we&rsquo;ll
+        remove your address from our list on request.</li>
+    </ul>
+    <p class="review-inline">[REVIEW: add the specific rights required for your users
+      — e.g. GDPR access/erasure/portability, or California CCPA/CPRA rights and a
+      &ldquo;Do Not Sell or Share&rdquo; statement — and how to exercise them.]</p>
+
+    <h2>Data retention</h2>
+    <p>We keep your email address until you unsubscribe or ask us to delete it.
+      Click-event counts are aggregate and retained to inform ranking.
+      <span class="review-inline">[REVIEW: set concrete retention periods.]</span></p>
+
+    <h2>Children&rsquo;s privacy</h2>
+    <p>This site is not directed to children under
+      <span class="review-inline">[REVIEW: 13, or 16 where applicable]</span>, and we
+      do not knowingly collect their information.</p>
+
+    <h2>Data security</h2>
+    <p>We rely on reputable providers and reasonable safeguards to protect your
+      information, but no method of transmission or storage is completely secure.</p>
+
+    <h2>International transfers</h2>
+    <p class="review-inline">[REVIEW: if you collect data from outside your country,
+      explain where it is processed and the safeguards used.]</p>
+
+    <h2>Changes to this policy</h2>
+    <p>We may update this policy from time to time. Material changes will be posted
+      here with a new effective date.</p>
+
+    <h2>Contact</h2>
+    <p>{{BUSINESS_NAME}}<br>
+      {{MAILING_ADDRESS}}<br>
+      <a href="mailto:{{CONTACT_EMAIL}}">{{CONTACT_EMAIL}}</a></p>
+
+    <hr>
+    <p style="font-size:13px;color:#5A6660">This template is provided as a starting
+      point and is not legal advice. Laws such as CAN-SPAM, GDPR, UK GDPR, and
+      CCPA/CPRA impose specific requirements; consult a qualified professional
+      before relying on this document.</p>
+  </div></main>
+
+  <footer><div class="wrap">
+    {{BUSINESS_NAME}} · {{LOCATION}} · <a href="index.html">Back to the deals</a>
+  </div></footer>
+</body>
+</html>

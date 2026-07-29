@@ -1,0 +1,14 @@
+name = "dealhunter-clicks"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+# After `wrangler kv namespace create CLICKS`, paste the printed id below.
+[[kv_namespaces]]
+binding = "CLICKS"
+id = "PASTE_YOUR_KV_NAMESPACE_ID_HERE"
+
+# Email signups (optional). Set your Resend Audience/Segment id here, and store
+# the API key as a secret (never in this file):
+#   wrangler secret put RESEND_API_KEY
+[vars]
+RESEND_AUDIENCE_ID = "PASTE_YOUR_RESEND_AUDIENCE_ID_HERE"
