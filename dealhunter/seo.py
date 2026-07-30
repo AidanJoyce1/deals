@@ -51,7 +51,7 @@ def _jsonld(deal: Deal, canonical: str, active: bool) -> str:
         node["brand"] = {"@type": "Brand", "name": deal.merchant}
     if deal.image:
         node["image"] = [deal.image]
-    if deal.price is not None:
+    if deal.price and deal.price > 0:
         node["offers"] = {
             "@type": "Offer",
             "url": canonical,
@@ -68,7 +68,7 @@ def _blurb(deal: Deal) -> str:
     parts = []
     if deal.discount_pct:
         parts.append(f"currently {deal.discount_pct:.0f}% off")
-    if deal.price is not None and deal.orig_price is not None:
+    if deal.price and deal.price > 0 and deal.orig_price:
         parts.append(f"down to ${deal.price:,.2f} from ${deal.orig_price:,.2f}")
     where = f" at {deal.merchant}" if deal.merchant else ""
     lead = f"{deal.title}{where}"
@@ -163,7 +163,7 @@ def render_deal_page(deal: Deal, *, cfg: dict, base_url: str, cta_url: str,
 
     # price box
     pricebox = ""
-    if deal.price is not None:
+    if deal.price and deal.price > 0:
         was = (f'<span class="was">${deal.orig_price:,.2f}</span>'
                if deal.orig_price is not None else "")
         save = (f'<span class="save">{deal.discount_pct:.0f}% off</span>'

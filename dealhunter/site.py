@@ -43,9 +43,11 @@ def _badge(d: Deal) -> tuple[str, str]:
 def _price_row(d: Deal) -> str:
     if d.price is None and d.orig_price is None:
         return ""
-    now = f'<span class="now">${d.price:,.2f}</span>' if d.price is not None else ""
+    now = f'<span class="now">${d.price:,.2f}</span>' if (d.price and d.price > 0) else ""
     was = (f'<span class="was">${d.orig_price:,.2f}</span>'
-           if d.orig_price is not None else "")
+           if (d.orig_price and d.orig_price > 0) else "")
+    if not now and not was:
+        return ""
     return f'<div class="deal__price">{now}{was}</div>'
 
 
@@ -260,6 +262,14 @@ _TEMPLATE = r"""<!DOCTYPE html>
   @media (prefers-reduced-motion:no-preference){
     .deal{animation:rise .5s cubic-bezier(.2,.7,.2,1) both}
     @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+  }
+  @media print{
+    *{animation:none !important;transition:none !important}
+    .ribbon,.regionnav,.search,.chips,.signup,.perf{display:none !important}
+    .tag{transform:none !important;box-shadow:none !important}
+    .tag::before{display:none !important}
+    body{background:#fff !important}
+    .deal{box-shadow:none !important;border:1px solid #ccc;break-inside:avoid;page-break-inside:avoid}
   }
 </style>
 </head>

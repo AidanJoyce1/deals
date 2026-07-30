@@ -58,7 +58,7 @@ def categorize(title: str) -> tuple[str, bool]:
 # ---------------------------------------------------------------------------
 _PCT_RE = re.compile(r"(\d{1,3})\s?%\s?off", re.I)
 _WAS_RE = re.compile(r"\$?([\d,]+(?:\.\d{1,2})?)\s*(?:->|→|from|\(?\s*(?:was|reg\.?|orig\.?|list)\s*)\$?([\d,]+(?:\.\d{1,2})?)", re.I)
-_FREE_RE = re.compile(r"\bfree\b", re.I)
+_FREE_RE = re.compile(r"(^\s*free\b|\bfor free\b|100%\s*free|totally free|\bfree after\b|\bfree w/|\bfree with (?:purchase|code|coupon|promo|order)|\bget it free\b|\bnow free\b|\bfree \+ free\b)", re.I)
 _PRICE_RE = re.compile(r"\$([\d,]+(?:\.\d{1,2})?)")
 
 
@@ -82,7 +82,7 @@ def extract_discount(title: str) -> tuple[Optional[float], Optional[float], Opti
             return low, high, round((1 - low / high) * 100, 1)
 
     if _FREE_RE.search(t):
-        return 0.0, None, 100.0
+        return None, None, 100.0
 
     return None, None, None
 
