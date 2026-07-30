@@ -69,6 +69,45 @@ PRESETS: dict[str, dict] = {
             "currency": ["currency"],
         },
     },
+    "impact": {  # Impact.com product catalog export (Walmart, Target, Best Buy, etc.)
+        "format": "csv",
+        "mapping": {
+            "title": ["Name", "product_name", "title"],
+            "url": ["TrackingLink", "Url", "url", "link", "product_url"],
+            "sale_price": ["CurrentPrice", "SalePrice", "current_price", "price"],
+            "price": ["OriginalPrice", "original_price", "RetailPrice", "list_price"],
+            "image": ["ImageUrl", "image_url", "image"],
+            "merchant": ["CampaignName", "AdvertiserName", "manufacturer", "Brand"],
+            "category": ["Category", "category"],
+            "currency": ["Currency", "currency"],
+        },
+    },
+    "shareasale": {  # ShareASale is now Awin - same publisher feed columns
+        "format": "csv",
+        "mapping": {
+            "title": ["product_name", "name", "Name"],
+            "url": ["aw_deep_link", "link", "url", "buyurl"],
+            "price": ["rrp_price", "retailprice", "price"],
+            "sale_price": ["search_price", "saleprice", "sale_price"],
+            "image": ["aw_image_url", "imageurl", "image"],
+            "merchant": ["merchant_name", "merchantname", "merchant"],
+            "category": ["merchant_category", "category"],
+            "currency": ["currency"],
+        },
+    },
+    "flexoffers": {  # FlexOffers product feed
+        "format": "csv",
+        "mapping": {
+            "title": ["ProductName", "name", "title"],
+            "url": ["LinkURL", "link", "url"],
+            "price": ["RetailPrice", "price", "list_price"],
+            "sale_price": ["SalePrice", "sale_price", "saleprice"],
+            "image": ["ImageURL", "image", "imageurl"],
+            "merchant": ["AdvertiserName", "merchant", "brand"],
+            "category": ["Category", "category"],
+            "currency": ["Currency", "currency"],
+        },
+    },
     "generic": {"mapping": {}},
 }
 
